@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- definition of simple elements -->
+
+<xs:element name="Library">
+      <xs:complexType>
+        <xs:complexContent>
+		    <xs:sequence>
+			       <xs:element name="Title" type="xs.string"/>
+				   <xs:element name="Author" type="xs.string"/>
+				   <xs:element name="Publisher" type="xs.string"/>
+				   <xs:element name="Cover" type="xs.string"/>
+				   <xs:element name="Category" type="xs.string"/>
+				   <xs:element name="ISBN" type="xs.varchar"/>
+				   <xs:element name="Rating" type="xs.positiveinteger"/>
+				   <xs:element name="Price" type="xs.string"/>
+				   <xs:element name="Comments" type="xs.decimal"/>
+			</xs:sequence>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:element>
+</xs:schema>
