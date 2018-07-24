@@ -1,0 +1,67 @@
+package SeleniumPackage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+//import org.openqa.selenium.ui.Select;
+//import java.net.MalformedURLException;
+//import java.net.URL;
+
+import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.ie.InternetExplorerDriver;
+//import org.openqa.selenium.remote.DesiredCapabilities;
+//import org.openqa.selenium.remote.RemoteWebDriver;
+public class MyIEDemo {
+
+	public static void main(String[] args) throws InterruptedException
+
+	{
+		System.setProperty("webdriver.ie.driver", "D:/M4/IEDriverServer.exe");
+		
+		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+		WebDriver driver = new InternetExplorerDriver(capabilities);
+		
+		driver.get("file:///D:/M4/case%20study/Recipe_class_registration.htm");
+		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys("Renuka Devi");
+		System.out.println("It will fill the first name: Renuka Devi");
+		driver.findElement(By.name("lname")).sendKeys("Kada");
+		System.out.println("It will fill the last name: Kada");
+		driver.findElement(By.cssSelector("input[name='email']")).sendKeys("renuka26696@gmail.com");
+		System.out.println("It will fill the emailid: renuka26696@gmail.com");
+		driver.findElement(By.id("mobile")).sendKeys("8790192614");
+		System.out.println("It will fill the mobile number :8790192614");
+		
+		Select category = new Select(driver.findElement(By.name("D6")));
+		category.selectByVisibleText("Veg");
+		System.out.println("It will select the category: Veg");
+		
+		Select city = new Select(driver.findElement(By.name("D5")));
+		city.selectByVisibleText("Mumbai");
+		System.out.println("It will select the city: Mumbai");
+		
+		Select mode = new Select(driver.findElement(By.name("D4")));
+		mode.selectByVisibleText("In house training");
+		System.out.println("It will select the mode: In house training");
+		
+		Select course = new Select(driver.findElement(By.xpath("html/body/form/table/tbody/tr[9]/td[2]/select")));
+		course.selectByValue("audi");
+		System.out.println("It will select the course: 6 months");
+		driver.findElement(By.id("enqdetails")).sendKeys("cost");
+		System.out.println("It will fill the enquiry details: cost");
+		
+		driver.findElement(By.id("Submit1")).click();
+		System.out.println("It will click on the submit button");
+		
+		//driver.quit();
+	}
+}
+		/*capabilities.setBrowserName("chrome");
+		capabilities.setCapability("webdriver.chromedriver.driver", "D:/chromedriver.exe");
+		
+
+		
+		capabilities.setPlatform(Platform.WINDOWS);
+		//capabilities.setVersion(version);*/
+		

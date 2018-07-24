@@ -1,0 +1,56 @@
+import org.openqa.selenium.*;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class RecipeClassRegistration {
+	public static void main(String args[]) throws InterruptedException {
+		System.setProperty("webdriver.chromedriver.driver","D:/M4/chrome.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("file:///D:/M4/case%20study/Recipe_class_registration.htm");
+		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys("Renuka Devi");
+		driver.findElement(By.name("lname")).sendKeys("Kada");
+		driver.findElement(By.cssSelector("input[name='email']")).sendKeys("renuka26696@gmail.com");
+		driver.findElement(By.id("mobile")).sendKeys("8790192614");
+		
+		Select category = new Select(driver.findElement(By.name("D6")));
+		category.selectByVisibleText("Veg");
+		
+		Select city = new Select(driver.findElement(By.name("D5")));
+		city.selectByVisibleText("Mumbai");
+		
+		Select mode = new Select(driver.findElement(By.name("D4")));
+		mode.selectByVisibleText("In house training");
+		
+		Select course = new Select(driver.findElement(By.xpath("html/body/form/table/tbody/tr[9]/td[2]/select")));
+		course.selectByValue("audi");
+		
+		String title="Online Cooking Class Enquiry Form";
+		if(driver.getTitle().equals(title))
+		{
+			System.out.println("true");
+		}
+		else {
+			System.out.println("false");
+		}
+		
+		if(driver.getPageSource().contains("Online Cooking School")) {
+			System.out.println("true");
+		}
+		else {
+			System.out.println("false");
+		}
+		//WebElement driver.switchTo().alert();
+		//System.out.println(driver.switchTo().alert().getText());
+		Thread.sleep(3000);
+		driver.findElement(By.id("enqdetails")).sendKeys("cost");
+		//driver.findElement(By.xpath("html/body/form/table/tbody/tr[12]/td/a")).click();
+		driver.findElement(By.id("Submit1")).click();
+		Alert prompt = driver.switchTo().alert();
+		
+		prompt.dismiss();
+		//driver.close();
+		
+	}
+
+}
